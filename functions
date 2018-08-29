@@ -1,0 +1,70 @@
+
+# There is one last language feature where the distinction is important. Consider the following function:
+
+def foo(*positional, **keywords):
+    print ("Positional:", positional)
+    print ("Keywords:", keywords)
+#The *positional argument will store all of the positional arguments passed to foo(), with no limit to how many you can provide.
+
+"""
+foo('one', 'two', 'three')
+Positional: ('one', 'two', 'three')
+Keywords: {}
+The **keywords argument will store any keyword arguments:
+
+>>> foo(a='one', b='two', c='three')
+Positional: ()
+Keywords: {'a': 'one', 'c': 'three', 'b': 'two'}
+And of course, you can use both at the same time:
+
+>>> foo('one','two',c='three',d='four')
+Positional: ('one', 'two')
+Keywords: {'c': 'three', 'd': 'four'}
+These features are rarely used, but occasionally they are very useful, and it's important to know which arguments are positional or keywords.
+
+"""
+
+"""
+def bar(*args, a=5, c=6):
+    print(args)
+    print(a)
+    print(c)
+"""
+
+def test(a=4, *args, c=5, d= 30):
+    print(a)
+    print(args)
+    print(c)
+    print(d)
+
+
+kwargs_a = dict()
+
+kwargs_a['a'] = 89
+
+
+kwargs = dict()
+kwargs['c'] = 79
+kwargs['d'] = 99
+
+test(2,3,4, **kwargs)
+
+
+def pos(a=20, b=40):
+    print(a)
+    print(b)
+
+pos(100, 200)
+
+
+
+"""
+bar(1,2,3,4, a=10, c= 30)
+
+kwargs = dict()
+
+kwargs['a'] = 100
+kwargs['c'] = 400
+
+bar(1,2,3,4, **kwargs)
+"""
